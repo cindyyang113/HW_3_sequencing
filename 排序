@@ -1,0 +1,21 @@
+def quick_sort(arr):
+    if len(arr) <= 1: # 如果數組中元素少於等於1，則直接返回該數組
+        return arr
+    else:
+        pivot = arr[0] # 選擇數組中的第一個元素作為基準點
+        left = [] # 創建一個空的列表，用於存儲小於基準點的數
+        right = [] # 創建一個空的列表，用於存儲大於等於基準點的數
+        for i in range(1, len(arr)): # 循環遍歷除基準點外的其他元素
+            if arr[i] < pivot: # 如果元素小於基準點
+                left.append(arr[i]) # 將該元素添加到左邊列表
+            else:
+                right.append(arr[i]) # 將該元素添加到右邊列表
+        # 遞迴排序左右兩邊的子數組，再將排序好的左子數組、基準點、右子數組拼接在一起
+        return quick_sort(left) + [pivot] + quick_sort(right)
+
+
+# demo
+arr = [33, 67, 8, 13, 54, 119, 3, 84, 25, 41]
+print("Original array:", arr)
+sorted_arr = quick_sort(arr)
+print("Sorted array:", sorted_arr)
